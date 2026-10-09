@@ -71,3 +71,24 @@ body.intro-active{overflow:hidden}
 @keyframes introZoom{0%,30%{transform:scale(1);opacity:1}100%{transform:scale(2.2);opacity:0}}
 @keyframes flashReveal{0%,40%{opacity:0}70%{opacity:1}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.intro-symbol,.intro-center,.cinematic-intro::after{animation:none!important}}
+
+/* V6: mobile intro alignment and viewport-safe typography */
+.cinematic-intro{width:100%;width:100dvw;height:100%;height:100dvh;min-height:0}
+.intro-center{box-sizing:border-box;min-width:0;max-width:100%;margin-inline:auto;justify-content:center}
+.intro-symbol{display:block;flex:none;max-width:100%;margin-inline:auto}
+.intro-wordmark,.intro-subtitle,.intro-overline,.intro-tagline{max-width:100%;overflow-wrap:normal}
+@media(max-width:600px){
+ .cinematic-intro{display:flex;align-items:center;justify-content:center}
+ .intro-center{width:100%;max-width:440px;padding:18px 18px 38px;align-items:center;text-align:center}
+ .intro-symbol{width:min(64vw,250px);margin:8px auto 2px}
+ .intro-wordmark{font-size:clamp(26px,8.8vw,45px);letter-spacing:-.055em;white-space:nowrap}
+ .intro-subtitle{font-size:clamp(8px,2vw,11px);letter-spacing:.10em;white-space:nowrap;margin-top:10px}
+ .intro-overline{font-size:9px;letter-spacing:.12em}
+ .intro-rule{width:min(76vw,300px);margin:18px auto 12px}
+ .intro-tagline{font-size:clamp(8px,2.1vw,11px);letter-spacing:.08em;line-height:1.6;max-width:320px;margin-inline:auto}
+ .intro-halo{width:min(85vw,400px);left:50%;top:50%;translate:-50% -50%}
+ .intro-bottom{left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom));font-size:9px}
+ #skip-intro{padding:10px 12px;font-size:10px}
+}
+@media(max-width:360px){.intro-center{padding-inline:12px}.intro-wordmark{font-size:8.5vw}.intro-subtitle{font-size:7px;letter-spacing:.08em}.intro-status{max-width:105px}}
+@media(max-height:560px) and (max-width:900px){.intro-symbol{width:min(34vh,180px)}.intro-center{padding-block:8px}.intro-rule{margin-block:9px}.intro-bottom{bottom:8px}}
