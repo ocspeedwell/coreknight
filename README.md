@@ -1,11 +1,15 @@
-# CoreKnight Technologies Ltd website
+# CoreKnight Technologies Ltd, Website V2
 
-Static responsive website. Upload the contents of this folder to a GitHub repository and enable GitHub Pages from the main branch root, or deploy to any static web host.
+Premium responsive static corporate website with cinematic animated CK intro.
 
-## Before launch
-- Replace the placeholder `hello@coreknight.com` with an address you own.
-- Confirm all product descriptions, legal details and public claims.
-- The approved logo artwork is included in `assets/coreknight-brand.png` as a brand asset. The website uses a CSS/text monogram for responsive layout, not an exact vector trace of the approved mark. Replace this with a professionally prepared transparent SVG when available.
-- Update domain, canonical URL and social links once confirmed.
+## Publish on GitHub Pages
+Upload the **contents** of this folder to the root of the `coreknight` repository (replace older files). In Settings > Pages choose Deploy from branch, `main`, `/ (root)`.
 
-No API keys or credentials are required. Contact action opens the visitor's email application.
+## Introduction
+`intro.js` controls the animation. It auto-closes after 5.5 seconds. Visitors can select **Skip Intro** or press Escape. Reduced-motion visitors see the intro briefly, without animations.
+
+## Before public launch
+- Replace `hello@coreknight.com` with a confirmed address.
+- The animated CK symbol is a bespoke SVG interpretation of the approved logo, not an exact vector tracing. The approved original artwork is in `assets/coreknight-brand.png`.
+- Review public claims and products, and set up the real domain once registered.
+- No API secrets or private data are included.
