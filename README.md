@@ -1,20 +1,18 @@
-# CoreKnight Technologies Ltd, Website V3
+# CoreKnight Technologies Ltd, Website V4
 
-Static HTML/CSS/JS website for GitHub Pages.
+## Contact form fix
+V3 intercepted FormSubmit with cross-origin AJAX, which could fail in browsers. V4 uses a standard HTML POST to `https://formsubmit.co/ccsonyewuotu@gmail.com`, letting FormSubmit handle verification and CAPTCHA on its own page. No client-side JavaScript intercepts submissions.
 
-## New in V3
-- Gold and silver CK assembly, 3D rotation, light sweep and cinematic zoom reveal.
-- Skip Intro, Escape key and reduced-motion support.
-- Location cards: Halifax, Kigali, Lisbon, Victoria Island (Lagos), New Owerri (Imo).
-- Validated contact form, status messages and asynchronous submission.
+**Activation is essential:** publish the website, submit a test message, and follow the FormSubmit activation email delivered to `ccsonyewuotu@gmail.com` (check spam). Submit another test after activation and verify the message arrives. This has NOT been live-tested. FormSubmit is a third-party service, not a guaranteed delivery system.
 
-## IMPORTANT: Activate the contact form
-The form currently routes to **ccsonyewuotu@gmail.com** using the third-party service FormSubmit (formsubmit.co). This is a provisional recipient, not a confirmed corporate mailbox. After the first live submission, FormSubmit emails the recipient an activation link. **The recipient must click it** before messages can be delivered. Test with a real enquiry and check spam/junk. Delivery cannot be verified from this offline build.
+**To change email recipient:** update the `action` URL in `index.html`. Purchasing `coreknight.com` alone does not create an email inbox.
 
-To change the recipient, replace `ccsonyewuotu@gmail.com` in BOTH `index.html` and `contact.js`. The form sends name, email, organisation, service and message to FormSubmit. Its privacy and retention terms should be reviewed before production.
+## Custom domain GitHub Pages
+1. Upload all extracted files, including `CNAME`, to the repository root.
+2. In GitHub repository Settings > Pages > Custom domain, enter `coreknight.com` and save.
+3. At your DNS provider set four A records for `@` to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+4. Set `www` CNAME to `ocspeedwell.github.io` (not `coreknight.com`).
+5. Remove conflicting A/AAAA/CNAME records for the same hosts, but **do not remove MX, TXT, or other email-related records**.
+6. Wait for DNS and GitHub Pages verification, then enable Enforce HTTPS.
 
-## GitHub Pages
-Upload the extracted contents to the root of `ocspeedwell/coreknight` and overwrite older files. GitHub Pages: Settings > Pages > Deploy from branch `main`, `/ (root)`.
-
-## Notes
-Listed locations do not claim street offices. The CK intro SVG is a stylised interpretation of the approved logo. No secrets are required in the static site.
+GitHub Pages serves static websites, so a robust first-party contact form with message storage and delivery guarantees requires a serverless function or backend service. Never put mail service API keys in public JavaScript.
