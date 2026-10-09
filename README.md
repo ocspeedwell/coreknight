@@ -1,15 +1,20 @@
-# CoreKnight Technologies Ltd, Website V2
+# CoreKnight Technologies Ltd, Website V3
 
-Premium responsive static corporate website with cinematic animated CK intro.
+Static HTML/CSS/JS website for GitHub Pages.
 
-## Publish on GitHub Pages
-Upload the **contents** of this folder to the root of the `coreknight` repository (replace older files). In Settings > Pages choose Deploy from branch, `main`, `/ (root)`.
+## New in V3
+- Gold and silver CK assembly, 3D rotation, light sweep and cinematic zoom reveal.
+- Skip Intro, Escape key and reduced-motion support.
+- Location cards: Halifax, Kigali, Lisbon, Victoria Island (Lagos), New Owerri (Imo).
+- Validated contact form, status messages and asynchronous submission.
 
-## Introduction
-`intro.js` controls the animation. It auto-closes after 5.5 seconds. Visitors can select **Skip Intro** or press Escape. Reduced-motion visitors see the intro briefly, without animations.
+## IMPORTANT: Activate the contact form
+The form currently routes to **ccsonyewuotu@gmail.com** using the third-party service FormSubmit (formsubmit.co). This is a provisional recipient, not a confirmed corporate mailbox. After the first live submission, FormSubmit emails the recipient an activation link. **The recipient must click it** before messages can be delivered. Test with a real enquiry and check spam/junk. Delivery cannot be verified from this offline build.
 
-## Before public launch
-- Replace `hello@coreknight.com` with a confirmed address.
-- The animated CK symbol is a bespoke SVG interpretation of the approved logo, not an exact vector tracing. The approved original artwork is in `assets/coreknight-brand.png`.
-- Review public claims and products, and set up the real domain once registered.
-- No API secrets or private data are included.
+To change the recipient, replace `ccsonyewuotu@gmail.com` in BOTH `index.html` and `contact.js`. The form sends name, email, organisation, service and message to FormSubmit. Its privacy and retention terms should be reviewed before production.
+
+## GitHub Pages
+Upload the extracted contents to the root of `ocspeedwell/coreknight` and overwrite older files. GitHub Pages: Settings > Pages > Deploy from branch `main`, `/ (root)`.
+
+## Notes
+Listed locations do not claim street offices. The CK intro SVG is a stylised interpretation of the approved logo. No secrets are required in the static site.
