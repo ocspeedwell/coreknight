@@ -92,3 +92,6 @@ body.intro-active{overflow:hidden}
 }
 @media(max-width:360px){.intro-center{padding-inline:12px}.intro-wordmark{font-size:8.5vw}.intro-subtitle{font-size:7px;letter-spacing:.08em}.intro-status{max-width:105px}}
 @media(max-height:560px) and (max-width:900px){.intro-symbol{width:min(34vh,180px)}.intro-center{padding-block:8px}.intro-rule{margin-block:9px}.intro-bottom{bottom:8px}}
+
+/* Spam trap: hidden from ordinary visitors */
+.ck-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
