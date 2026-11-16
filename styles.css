@@ -95,3 +95,8 @@ body.intro-active{overflow:hidden}
 
 /* Spam trap: hidden from ordinary visitors */
 .ck-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+
+/* V11 user-initiated cinematic sonic signature */
+#intro-sound-toggle{position:absolute;z-index:5;left:50%;bottom:76px;transform:translateX(-50%);background:rgba(7,20,38,.78);border:1px solid rgba(215,173,89,.65);border-radius:24px;color:#f1d6a0;padding:10px 16px;white-space:nowrap;letter-spacing:.08em;font:600 11px system-ui,sans-serif;cursor:pointer}
+#intro-sound-toggle:disabled{opacity:.65;cursor:default}
+@media(max-width:600px){#intro-sound-toggle{bottom:85px;font-size:10px;max-width:calc(100vw - 28px)}}

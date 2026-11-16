@@ -45,6 +45,7 @@
         <strong>Geraldine</strong>
         <span>CoreKnight Digital Concierge · AI-powered</span>
       </div>
+      <button id="kc-sound" type="button" aria-label="Mute Geraldine sounds" aria-pressed="true" title="Toggle Geraldine sound">♫</button>
       <button id="kc-close" type="button"
         aria-label="Close conversation">×</button>
     </div>
@@ -91,6 +92,17 @@
   let widget = null;
   let busy = false;
   let verificationNotice = null;
+  let soundEnabled = true;
+  const soundButton = panel.querySelector("#kc-sound");
+  soundButton.addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+    soundButton.textContent = soundEnabled ? "♫" : "♪̸";
+    soundButton.setAttribute("aria-pressed", String(soundEnabled));
+    soundButton.setAttribute("aria-label", soundEnabled ? "Mute Geraldine sounds" : "Enable Geraldine sounds");
+    if (soundEnabled) window.CoreKnightSound?.chime();
+  });
+  function chime() { if (soundEnabled) window.CoreKnightSound?.chime(); }
+
 
   function bubble(role, value) {
     const element = document.createElement("div");
@@ -219,6 +231,7 @@
 
   function open() {
     panel.hidden = false;
+    chime();
     launch.setAttribute("aria-expanded", "true");
 
     if (!initWidget()) {
@@ -390,6 +403,7 @@
       );
 
       waiting.textContent = answer;
+      chime();
 
     } catch (error) {
       console.error(
