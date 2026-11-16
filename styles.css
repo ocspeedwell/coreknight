@@ -100,3 +100,31 @@ body.intro-active{overflow:hidden}
 #intro-sound-toggle{position:absolute;z-index:5;left:50%;bottom:76px;transform:translateX(-50%);background:rgba(7,20,38,.78);border:1px solid rgba(215,173,89,.65);border-radius:24px;color:#f1d6a0;padding:10px 16px;white-space:nowrap;letter-spacing:.08em;font:600 11px system-ui,sans-serif;cursor:pointer}
 #intro-sound-toggle:disabled{opacity:.65;cursor:default}
 @media(max-width:600px){#intro-sound-toggle{bottom:85px;font-size:10px;max-width:calc(100vw - 28px)}}
+
+/* V11.1 mobile viewport containment: prevent horizontal page displacement */
+html{width:100%;max-width:100%;overflow-x:clip}
+body{width:100%;max-width:100%;min-width:0;overflow-x:clip}
+.header,.hero,.section,.strip,footer,.section-dark{max-width:100%;min-width:0}
+.wrap{width:100%;max-width:1200px;min-width:0}
+img,svg,video,canvas{max-width:100%}
+@media(max-width:720px){
+ .header{width:100%;max-width:100%;min-width:0}
+ .hero{width:100%;min-width:0;overflow:hidden}
+ .hero-art{pointer-events:none}
+ .hero h1,.hero p,.section-head h2,.contact h2{overflow-wrap:break-word}
+ .product,.principles,.services,.product-teasers,.steps,.footer-main,.section-head{min-width:0}
+ .product>*,.services>*,.footer-main>*,.section-head>*{min-width:0}
+ .actions .btn{max-width:100%;white-space:normal}
+ .strip{overflow:hidden}
+ .strip-inner{max-width:100%}
+ .cinematic-intro{left:0;right:0;max-width:100vw}
+}
+/* V11.2: restart the intro reveal after a visitor enables audio. */
+.cinematic-intro.intro-replay .intro-center,
+.cinematic-intro.intro-replay .intro-overline,
+.cinematic-intro.intro-replay .intro-symbol,
+.cinematic-intro.intro-replay .intro-wordmark,
+.cinematic-intro.intro-replay .intro-subtitle,
+.cinematic-intro.intro-replay .intro-rule,
+.cinematic-intro.intro-replay .intro-tagline,
+.cinematic-intro.intro-replay .intro-progress { animation-delay: 0s; }

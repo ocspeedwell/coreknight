@@ -1,32 +1,55 @@
-/* Original synthesized CoreKnight sound identity. No external audio assets. */
+/* CoreKnight original synthesised sound identity. Audio playback follows browser policies. */
 (() => {
   let ctx;
-  const audio = () => {
-    const C = window.AudioContext || window.webkitAudioContext;
-    if (!C) return null;
-    if (!ctx) ctx = new C();
-    if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+  const Context = window.AudioContext || window.webkitAudioContext;
+  function context() {
+    if (!Context) return null;
+    if (!ctx) ctx = new Context();
     return ctx;
-  };
-  function tone(freq, start, duration, volume, type = 'sine') {
-    const c = audio(); if (!c) return;
-    const o = c.createOscillator(), g = c.createGain();
-    o.type = type; o.frequency.setValueAtTime(freq, c.currentTime + start);
-    g.gain.setValueAtTime(0.0001, c.currentTime + start);
-    g.gain.exponentialRampToValueAtTime(Math.max(volume, 0.0002), c.currentTime + start + 0.045);
-    g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + start + duration);
-    o.connect(g); g.connect(c.destination);
-    o.start(c.currentTime + start); o.stop(c.currentTime + start + duration + 0.02);
+  }
+  function tone(c, frequency, offset, duration, peak, type = 'sine') {
+    const start = c.currentTime + offset;
+    const oscillator = c.createOscillator();
+    const envelope = c.createGain();
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(frequency, start);
+    envelope.gain.setValueAtTime(0.0001, start);
+    envelope.gain.exponentialRampToValueAtTime(peak, start + Math.min(.09, duration / 4));
+    envelope.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+    oscillator.connect(envelope);
+    envelope.connect(c.destination);
+    oscillator.start(start);
+    oscillator.stop(start + duration + .03);
+  }
+  async function ready() {
+    const c = context();
+    if (!c) return null;
+    if (c.state !== 'running') {
+      try { await c.resume(); } catch (_) { return null; }
+    }
+    return c.state === 'running' ? c : null;
   }
   window.CoreKnightSound = {
-    intro() {
-      tone(82.41, 0, 1.1, .07, 'triangle');
-      tone(164.81, .65, 1.5, .035, 'sine');
-      tone(329.63, 1.25, 1.25, .04, 'triangle');
-      tone(493.88, 2.15, 1.2, .04, 'sine');
-      tone(659.25, 2.8, 1.45, .05, 'sine');
-      tone(987.77, 3.55, 1.1, .022, 'sine');
+    async intro() {
+      const c = await ready();
+      if (!c) return false;
+      // Layered cinematic bass, metallic ascent, and final luminous resolve.
+      tone(c, 65.41, 0, 1.45, .19, 'triangle');
+      tone(c, 130.81, .12, 1.05, .065, 'sine');
+      tone(c, 164.81, .7, 1.4, .09, 'triangle');
+      tone(c, 329.63, 1.25, 1.35, .105, 'triangle');
+      tone(c, 493.88, 2.05, 1.3, .09, 'sine');
+      tone(c, 659.25, 2.75, 1.45, .12, 'sine');
+      tone(c, 82.41, 3.35, 1.4, .16, 'triangle');
+      tone(c, 987.77, 3.55, 1.1, .075, 'sine');
+      return true;
     },
-    chime() { tone(659.25, 0, .22, .035); tone(987.77, .15, .42, .026); }
+    async chime() {
+      const c = await ready();
+      if (!c) return false;
+      tone(c, 659.25, 0, .24, .09);
+      tone(c, 987.77, .16, .44, .075);
+      return true;
+    }
   };
 })();

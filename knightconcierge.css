@@ -16,3 +16,9 @@
 }
 @media(max-width:360px){#kc-header .kc-identity span{font-size:10px}#kc-header{gap:7px}#kc-header .kc-avatar{width:36px;height:36px}.kc-msg{max-width:96%}}
 @media(prefers-reduced-motion:reduce){#kc-launch{animation:none!important}}
+
+/* V11.1 ensure launcher stays inside the physical viewport */
+@media(max-width:600px){
+ #kc-launch{box-sizing:border-box;left:auto!important;right:max(12px,env(safe-area-inset-right))!important;width:auto!important;max-width:calc(100vw - 24px)!important}
+ #kc-panel{left:0!important;right:0!important;width:100%!important;max-width:100%!important;overflow:hidden}
+}
