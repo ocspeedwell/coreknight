@@ -1,2 +1,8 @@
-// Public endpoint only. Never add OpenAI API keys here.
-window.COREKNIGHT_AI = { apiUrl: 'https://REPLACE-WITH-YOUR-AI-WORKER.workers.dev' };
+
+window.COREKNIGHT_AI = {
+  apiUrl:
+    "https://coreknight-ai-concierge.ccsonyewuotu.workers.dev/chat",
+
+  turnstileSiteKey:
+    "0x4AAAAAAGAYoZooHBqUgXja"
+};
